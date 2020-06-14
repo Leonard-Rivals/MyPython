@@ -27,23 +27,34 @@ class Deck():
                 carte = [i,each]
                 pioche.append(carte)
         #print(pioche)
+                
+        def shuffle(pioche):
+            piocheMelange=[]
+            for i in range (0, 52):
+                index = randrange(0, 52-i)
+                piocheMelange.append(pioche[index])
+                del pioche[index]
+            return piocheMelange
+        
         pioche = shuffle(pioche)
         return pioche
     
-    def strHelp(val):
-        if(val==1):
-            return 'As'
-        elif ( val >10):
-            if (val==11):
-                return 'Valet'
-            elif( val==12):
-                return 'Dame'
-            elif(val==13):
-                return'Roi'
-        else:
-            return val
         
     def ___str___(deck):
+        
+        def strHelp(val):
+            if(val==1):
+                return 'As'
+            elif ( val >10):
+                if (val==11):
+                    return 'Valet'
+                elif( val==12):
+                    return 'Dame'
+                elif(val==13):
+                    return'Roi'
+            else:
+                return val
+            
         print('Le deck est composé de :')
         str =''
         for i in range(len(deck)):
@@ -56,14 +67,9 @@ class Deck():
     
     def ___del___(deck):
         deck = []
+        return deck
             
-    def shuffle(pioche):
-        piocheMelange=[]
-        for i in range (0, 52):
-            index = randrange(0, 52-i)
-            piocheMelange.append(pioche[index])
-            del pioche[index]
-        return piocheMelange
+    
     
     def Deal(pioche, joueur) :
         if(joueur == True):
@@ -89,7 +95,10 @@ class Deck():
         del indeck[index]
     
     pioche = ___init___()
-    #print(pioche)
+    print(pioche)
     
-    deckTest = [[9, 'Coeur'], [7, 'Trèfle']]
+    joueur1 = True
+    deckTest = Deal(pioche, joueur1 )
     ___str___(deckTest)
+    
+    print(pioche)
